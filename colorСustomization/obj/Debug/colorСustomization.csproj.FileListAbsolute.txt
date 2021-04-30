@@ -1,0 +1,16 @@
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\bin\Debug\colorСustomization.exe.config
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\bin\Debug\colorСustomization.exe
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\bin\Debug\colorСustomization.pdb
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\colorСustomization.csprojAssemblyReference.cache
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\MainWindow.g.cs
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\App.g.cs
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\colorСustomization_MarkupCompile.cache
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\MainWindow.baml
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\colorСustomization.g.resources
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\colorСustomization.Properties.Resources.resources
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\colorСustomization.csproj.GenerateResource.cache
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\colorСustomization.csproj.CoreCompileInputs.cache
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\colorСustomization.exe
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\colorСustomization.pdb
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\romak\source\repos\colorСustomization\colorСustomization\obj\Debug\colorСustomization_MarkupCompile.lref

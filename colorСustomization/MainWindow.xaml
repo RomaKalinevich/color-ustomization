@@ -1,0 +1,110 @@
+﻿<Window x:Class="colorСustomization.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:my="clr-namespace:colorСustomization"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Window.Resources>
+        <my:RgbConverter x:Key="RgbConverter" />
+        <my:AddColor x:Key="AddColor"/>
+        <Style TargetType="Slider" x:Key="SliderStyle">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Minimum" Value="0"/>
+            <Setter Property="Maximum" Value="255"/>
+            <Setter Property="SelectionStart" Value="0"/>
+            <Setter Property="IsSnapToTickEnabled" Value="True"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LabaelNameColor">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <Grid Height="200">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="79*"/>
+                <ColumnDefinition Width="121*"/>
+                <ColumnDefinition Width="94*"/>
+                <ColumnDefinition Width="446*"/>
+                <ColumnDefinition Width="52*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <CheckBox Grid.Row="0" Grid.Column ="0" x:Name="CheckAlpha" Margin="33,19,19,10" IsChecked="True"/>
+            <CheckBox Grid.Row="1" Grid.Column ="0" x:Name="CheckRed" Margin="33,19,19,10" IsChecked="True"/>
+            <CheckBox Grid.Row="2" Grid.Column ="0" x:Name="CheckGreen" Margin="33,19,19,10" IsChecked="True"/>
+            <CheckBox Grid.Row="3" Grid.Column ="0" x:Name="CheckBlue" Margin="33,19,19,10" IsChecked="True"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="Alpha:" Style="{StaticResource LabaelNameColor}"/>
+            <Label Grid.Row="1" Grid.Column="1" Content="Red:" Style="{StaticResource LabaelNameColor}"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="Green:" Style="{StaticResource LabaelNameColor}"/>
+            <Label Grid.Row="3" Grid.Column="1" Content="Blue:" Style="{StaticResource LabaelNameColor}"/>
+            <TextBlock Grid.Row="0" Grid.Column="2"
+                x:Name="textBlockAlpha" HorizontalAlignment="Right" FontSize="26"
+                       Text="{Binding ElementName=sliderAlpha, Path=Value}"/>
+            <TextBlock Grid.Row="1" Grid.Column="2"
+                x:Name="textBlockRef" HorizontalAlignment="Right" FontSize="26"
+                       Text="{Binding ElementName=sliderRed, Path=Value}"/>
+            <TextBlock Grid.Row="2" Grid.Column="2"
+                x:Name="textBlockGreen" HorizontalAlignment="Right" FontSize="26"
+                       Text="{Binding ElementName=sliderGreen, Path=Value}"/>
+            <TextBlock Grid.Row="3" Grid.Column="2"
+                x:Name="textBlockBlue" HorizontalAlignment="Right" FontSize="26"
+                       Text="{Binding ElementName=sliderBlue, Path=Value}"/>
+            <Slider x:Name="sliderAlpha" Grid.Row="0" Grid.Column="3" Value="255" Style="{StaticResource SliderStyle}"
+                    IsEnabled="{Binding ElementName=CheckAlpha, Path=IsChecked}"/>
+            <Slider x:Name="sliderRed" Grid.Row="1" Grid.Column="3" Style="{StaticResource SliderStyle}"
+                    IsEnabled="{Binding ElementName=CheckRed, Path=IsChecked}"/>
+            <Slider x:Name="sliderGreen" Grid.Row="2" Grid.Column="3"  Style="{StaticResource SliderStyle}"
+                    IsEnabled="{Binding ElementName=CheckGreen, Path=IsChecked}"/>
+            <Slider x:Name="sliderBlue" Grid.Row="3" Grid.Column="3"  Style="{StaticResource SliderStyle}"
+                    IsEnabled="{Binding ElementName=CheckBlue, Path=IsChecked}"/>
+            <Label x:Name="labelFinishColor" Grid.RowSpan="4" Grid.Column="4">
+                <Label.Background>
+                    <SolidColorBrush>
+                        <SolidColorBrush.Color>
+                            <MultiBinding Converter="{StaticResource RgbConverter}">
+                                <Binding Path="Value" ElementName="sliderAlpha" />
+                                <Binding Path="Value" ElementName="sliderRed" />
+                                <Binding Path="Value" ElementName="sliderGreen" />
+                                <Binding Path="Value" ElementName="sliderBlue" />
+                            </MultiBinding>
+                        </SolidColorBrush.Color>
+                    </SolidColorBrush>
+                </Label.Background>
+            </Label>
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160*"/>
+                <ColumnDefinition Width="235*"/>
+                <ColumnDefinition Width="198*"/>
+                <ColumnDefinition Width="198*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Grid.Row="0" Content="Add" FontSize="25" FontWeight="Bold" Margin="10,0,0,0"
+                    Command="{StaticResource AddColor}" Click="AddButton_Click" Height="40" VerticalAlignment="Bottom"/>
+        </Grid>
+        <ListBox Name="List"  ItemsSource="{Binding}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="70" Width="auto">
+                        <Label Content="{Binding hexColorName}" Margin="8,0,95,30" FontSize="26" Height="Auto" VerticalAlignment="Stretch"/>
+                        <Label Margin="250,5,0,0" Background="{Binding hexColorName}" FontSize="10" Width="250"/>
+                        <Button Content="Delete" HorizontalAlignment="Right" Height="22.5" Margin="250,0,8,8" VerticalAlignment="Bottom" Width="67.833" Click="DeleteButton_Click"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</Window>
